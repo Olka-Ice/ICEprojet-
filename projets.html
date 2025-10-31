@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes projets | Franckel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: rgba(0,0,0,0.3);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin-bottom: 5px;
+    }
+
+    a {
+      color: #ffeaa7;
+      text-decoration: none;
+    }
+
+    .back {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💼 Mes projets</h1>
+  <p>Voici quelques projets que j’ai réalisés ou que je suis en train d’apprendre :</p>
+
+  <div class="projects">
+    <div class="card">
+      <img src="site1.jpg" alt="Projet 1">
+      <h3>Mon premier site web</h3>
+      <p>Créé avec HTML, CSS et JavaScript sur Android à l’aide d’Acode.</p>
+    </div>
+
+    <div class="card">
+      <img src="jeu1.jpg" alt="Projet 2">
+      <h3>Mini jeu en JavaScript</h3>
+      <p>Un petit jeu interactif pour m’amuser tout en apprenant le code.</p>
+    </div>
+
+    <div class="card">
+      <img src="app1.jpg" alt="Projet 3">
+      <h3>Application To-Do</h3>
+      <p>Une appli simple pour gérer mes tâches quotidiennes.</p>
+    </div>
+  </div>
+
+  <p class="back">
+    <a href="index.html">⬅️ Retour à l’accueil</a>
+  </p>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+ <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+  }
+  h1 {
+    font-size: 2.2em;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+  nav {
+    margin-top: 20px;
+  }
+  nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(0,0,0,0.2);
+    padding: 10px 18px;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  nav a:hover {
+    background: rgba(0,0,0,0.4);
+    transform: scale(1.1);
+  }
+  img {
+    margin-top: 20px;
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  }
+</style> 
+</head>
+<body><script>
+  const formulaire = document.getElementById("monFormulaire");
+  const reponse = document.getElementById("reponse");
+
+  formulaire.addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche la page de se recharger
+
+    const nom = document.getElementById("nom").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    // Affiche un message personnalisé
+    reponse.innerHTML = `Merci ${nom} ! Ton message a été reçu 😊<br>Email: ${email}<br>Message: ${message}`;
+
+    // Réinitialise le formulaire
+    formulaire.reset();
+  });
+</script>
+  <h1>Contact 📬</h1>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <p>Tu peux me contacter à : <b<h2>Contactez-moi 📬</h2>
+
+<form id="monFormulaire">
+  <input type="text" id="nom" placeholder="Ton nom" required><br><br>
+  <input type="email" id="email" placeholder="Ton email" required><br><br>
+  <textarea id="message" placeholder="Ton message" required></textarea><br><br>
+  <button type="submit">Envoyer</button>
+</form>
+
+<p id="reponse"></p>>monemail@example.com</b></p>
+
+</html>

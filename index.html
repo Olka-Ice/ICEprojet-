@@ -1,0 +1,184 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon site pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* RESET ET STYLE GLOBAL */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg,#74b9ff,#a29bfe); color: #fff; padding: 20px; text-align: center; }
+
+    /* MENU RESPONSIVE */
+    #menuBtn { font-size:1.5em; cursor:pointer; background: rgba(0,0,0,0.2); color:white; padding:10px 15px; border-radius:8px; width:120px; margin:0 auto 20px; }
+    #menuContent a { display:block; text-decoration:none; color:white; background: rgba(0,0,0,0.3); margin:5px 0; padding:8px; border-radius:6px; transition:0.3s; }
+    #menuContent a:hover { background: rgba(0,0,0,0.5); }
+
+    /* TITRE ET IMAGE */
+    h1 { font-size:2.2em; margin-bottom:20px; text-shadow:2px 2px 5px rgba(0,0,0,0.3); }
+    img {
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+}
+    /* BOUTONS ANIMÉS */
+    button { margin:10px; padding:10px 20px; border:none; border-radius:10px; background:rgba(0,0,0,0.2); color:#fff; transition:0.3s; cursor:pointer; }
+    button:hover { transform:scale(1.1); background:rgba(0,0,0,0.4); }
+
+    /* FORMULAIRE */
+    form input, form textarea { width:80%; padding:10px; margin:5px 0; border-radius:8px; border:none; }
+    form button { width:50%; margin-top:10px; }
+
+    /* RÉPONSE FORMULAIRE */
+    #reponse { margin-top:10px; font-weight:600; }
+
+    /* PETITE ANIMATION */
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    body { animation: fadeIn 1s ease-in; }
+  </style>
+</head>
+<body>  
+
+<!-- MENU RESPONSIVE -->
+  <nav>
+  <a href="index.html">Accueil</a>
+  <a href="about.html">À propos</a>
+  <a href="projects.html">Projets</a>
+  <a href="jeu.html">🎮 Jeu</a>
+</nav>
+
+  <!-- TITRE ET IMAGE -->
+  <h1>Bienvenue sur mon site pro 🌈</h1>
+  <img src="photo_nouvelle.jpg" alt="Photo de profil">
+
+  <!-- BOUTON INTERACTIF -->
+  <button id="colorButton">Changer toutes les couleurs</button>
+
+  <!-- COMPTEUR DE CLICS -->
+  <h2>Compteur de clics 🖱️</h2>
+  <button id="clicBouton">Cliquez ici !</button>
+  <p>Nombre de clics : <span id="compteur">0</span></p>
+
+  <!-- FORMULAIRE -->
+  <h2>Contactez-moi 📬</h2>
+  <form id="monFormulaire">
+    <input type="text" id="nom" placeholder="Ton nom" required><br>
+    <input type="email" id="email" placeholder="Ton email" required><br>
+    <textarea id="message" placeholder="Ton message" required></textarea><br>
+    <button type="submit">Envoyer</button>
+  </form>
+  <p id="reponse"></p>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // MENU RESPONSIVE
+    const menuBtn = document.getElementById("menuBtn");
+    const menuContent = document.getElementById("menuContent");
+    menuBtn.addEventListener("click", function() {
+      menuContent.style.display = menuContent.style.display === "none" ? "block" : "none";
+    });
+
+    // BOUTON TOUT EN COULEUR
+    const colorBtn = document.getElementById("colorButton");
+    colorBtn.addEventListener("click", function() {
+      const couleurs = ["#ff7675","#74b9ff","#55efc4","#ffeaa7","#a29bfe","#fd79a8","#fab1a0"];
+      document.body.style.background = couleurs[Math.floor(Math.random() * couleurs.length)];
+      document.body.style.color = couleurs[Math.floor(Math.random() * couleurs.length)];
+      document.querySelectorAll("button").forEach(btn => {
+        btn.style.background = couleurs[Math.floor(Math.random() * couleurs.length)];
+        btn.style.color = "#fff";
+      });
+    });
+
+    // COMPTEUR DE CLICS PERSISTANT
+    let compteur = localStorage.getItem("clics") ? parseInt(localStorage.getItem("clics")) : 0;
+    const bouton = document.getElementById("clicBouton");
+    const affichage = document.getElementById("compteur");
+    affichage.textContent = compteur;
+    bouton.addEventListener("click", function() {
+      compteur++;
+      affichage.textContent = compteur;
+      localStorage.setItem("clics", compteur);
+    });
+
+    // FORMULAIRE INTERACTIF
+    const formulaire = document.getElementById("monFormulaire");
+    const reponse = document.getElementById("reponse");
+    formulaire.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const nom = document.getElementById("nom").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+      reponse.innerHTML = `Merci ${nom} ! Ton message a été reçu 😊<br>Email: ${email}<br>Message: ${message}`;
+      formulaire.reset();
+    });
+  </script>
+
+</body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos | Mon Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    .creator {
+      margin-top: 30px;
+      background: rgba(0,0,0,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    a {
+      color: #ffeaa7;
+      text-decoration: none;
+    }
+  </style>
+</head><style>
+  nav {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  }
+
+  nav a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    color: white;
+    text-shadow: 0 0 8px #00ffcc;
+  }
+</style>
+<body>
+</html>
+<a href="projets.html">Projets</a>

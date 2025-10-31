@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeu de Devinette</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #00ff99;
+    }
+    input {
+      padding: 10px;
+      width: 80px;
+      text-align: center;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background-color: #00ff99;
+      color: #0e0e0e;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00cc88;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Jeu de Devinette 🎯</h1>
+  <p>Devine le nombre entre <strong>1</strong> et <strong>20</strong></p>
+
+  <input type="number" id="guess" min="1" max="20" />
+  <button onclick="checkGuess()">Valider</button>
+
+  <p id="message"></p>
+  <p id="score">Essais restants : 5</p>
+
+  <script>
+    let nombreMystere = Math.floor(Math.random() * 20) + 1;
+    let essais = 5;
+
+    function checkGuess() {
+      const guess = Number(document.getElementById("guess").value);
+      const message = document.getElementById("message");
+      const score = document.getElementById("score");
+
+      if (essais > 0) {
+        if (guess === nombreMystere) {
+          message.textContent = "🎉 Bravo ! Tu as deviné le bon nombre !";
+          message.style.color = "#00ff99";
+        } else if (guess > nombreMystere) {
+          message.textContent = "🔻 Trop grand ! Essaie plus petit.";
+          essais--;
+        } else {
+          message.textContent = "🔺 Trop petit ! Essaie plus grand.";
+          essais--;
+        }
+        score.textContent = "Essais restants : " + essais;
+
+        if (essais === 0 && guess !== nombreMystere) {
+          message.textContent =
+            "💀 Perdu ! Le nombre était " + nombreMystere + ".";
+          message.style.color = "red";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
