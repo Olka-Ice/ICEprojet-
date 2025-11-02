@@ -1,87 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeu de Devinette</title>
-  <style>
-    body {
-      background-color: #0e0e0e;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 30px;
-    }
-    h1 {
-      color: #00ff99;
-    }
-    input {
-      padding: 10px;
-      width: 80px;
-      text-align: center;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
-    }
-    <p id="score">Score : 0</p>
-    button {
-      background-color: #00ff99;
-      color: #0e0e0e;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #00cc88;
-    }
-    p {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-  </style>
 </head>
 <body>
-  <h1>🎲 Jeu de Devinette 🎯</h1>
-  <p>Devine le nombre entre <strong>1</strong> et <strong>20</strong></p>
+  <h1>🎯 Jeu de Devinette</h1>
+  <p>Devine le nombre entre 1 et 10 :</p>
 
-  <input type="number" id="guess" min="1" max="20" />
-  <button onclick="checkGuess()">Valider</button>
+  <!-- Zone pour taper le nombre -->
+  <input type="number" id="essai" placeholder="Entrez un nombre">
 
-  <p id="message"></p>
-  <p id="score">Essais restants : 5</p>
+  <!-- ✅ Le score DOIT être ici, en dehors du script -->
+  <p id="score">Score : 0</p>
+
+  <!-- Le bouton pour valider -->
+  <button onclick="deviner()">Deviner</button>
+
+  <!-- Zone où le message s’affiche -->
+  <p id="resultat"></p>
+
+  <!-- Le script doit venir APRÈS le HTML -->
   <script>
-    let nombreMystere = Math.floor(Math.random() * 20) + 1;
-    let essais = 5;
+    let nombreMystere = Math.floor(Math.random() * 10) + 1;
+    let score = 0;
 
-    function checkGuess() {
-      const guess = Number(document.getElementById("guess").value);
-      const message = document.getElementById("message");
-      const score = document.getElementById("score");
+    function deviner() {
+      const essai = document.getElementById("essai").value;
+      const resultat = document.getElementById("resultat");
+      const scoreAffiche = document.getElementById("score");
 
-      if (essais > 0) {
-        if (guess === nombreMystere) {
-          message.textContent = "🎉 Bravo ! Tu as deviné le bon nombre !";
-          message.style.color = "#00ff99";
-        } else if (guess > nombreMystere) {
-          message.textContent = "🔻 Trop grand ! Essaie plus petit.";
-          essais--;
-        } else {
-          message.textContent = "🔺 Trop petit ! Essaie plus grand.";
-          essais--;
-        }
-        score.textContent = "Essais restants : " + essais;
-
-        if (essais === 0 && guess !== nombreMystere) {
-          message.textContent =
-            "💀 Perdu ! Le nombre était " + nombreMystere + ".";
-          message.style.color = "red";
-        }
+      if (essai == nombreMystere) {
+        resultat.textContent = "🎉 Bravo ! Tu as trouvé le bon nombre !";
+        score++;
+        scoreAffiche.textContent = "Score : " + score;
+        nombreMystere = Math.floor(Math.random() * 10) + 1; // Nouveau nombre
+      } else if (essai < nombreMystere) {
+        resultat.textContent = "🔼 C’est plus grand !";
+      } else {
+        resultat.textContent = "🔽 C’est plus petit !";
       }
     }
   </script>
-
 </body>
 </html>
