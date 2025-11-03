@@ -4,7 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeu de Devinette</title>
-</head>
+<style>
+  #score {
+    font-size: 24px;       /* Taille plus grande */
+    font-weight: bold;      /* Texte en gras */
+    color: #00ff00;         /* Vert lumineux */
+    margin: 15px 0;         /* Espace au-dessus et en dessous */
+    text-align: center;     /* Centré horizontalement */
+  }
+
+  /* Tu peux aussi styliser le bouton pour qu’il soit plus joli */
+  button {
+    background-color: #00ffcc;
+    color: #0e0e0e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #00cc99;
+  }
+</style>
 <body>
   <h1>🎯 Jeu de Devinette</h1>
   <p>Devine le nombre entre 1 et 10 :</p>
